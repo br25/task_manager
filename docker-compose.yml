@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  # Django web application
+  web:
+    build: .
+    container_name: django_app
+    ports:
+      - "8080:8000"
+    volumes:
+      - .:/app
+    env_file: .env  # Specify the .env file for Django's environment variables
+    links:
+      - db 
+
+  # PostgreSQL database
+  db:
+    image: postgres
+    container_name: postgres_db
+    environment:
+      POSTGRES_DB: ${DB_NAME}  # Use environment variables for PostgreSQL settings
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data: 

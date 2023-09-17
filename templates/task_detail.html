@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+    <!-- Include Bootstrap CSS via CDN -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Task Details</h1>
+        
+        <div class="card">
+            <div class="card-body">
+                <h2 class="card-title">{{ task.title }}</h2>
+                <p class="card-text">Description: {{ task.description }}</p>
+                <p class="card-text">Due Date: {{ task.due_date }}</p>
+                <p class="card-text">Priority: {{ task.get_priority_display }}</p>
+                <p class="card-text">Completion Status: {% if task.completion_status %}Completed{% else %}Not Completed{% endif %}</p>
+                
+                <!-- Display Photos -->
+                <h3 class="mt-4">Photos:</h3>
+                <div class="row">
+                    {% for photo in task.photos.all %}
+                        <div class="col-md-3 mb-3">
+                            <div class="card">
+                                <img src="{{ photo.image.url }}" class="card-img-top" alt="Photo">
+                                <div class="card-body">
+                                    <p class="card-text">Upload Date: {{ photo.upload_date }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <p>No photos available for this task.</p>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        </div>
+
+        <a class="btn btn-secondary mt-3" href="{% url 'task-list' %}">Back to Task List</a>
+    </div>
+
+    <!-- Include Bootstrap JS and jQuery via CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

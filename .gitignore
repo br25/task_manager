@@ -1,0 +1,26 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore the virtual environment directory (if used)
+venv/
+env/
+
+# Ignore database files
+*.sqlite3
+*.db
+*.db.sqlite3
+db.sqlite3
+
+# Ignore environment variable files
+.env
+
+# Ignore compiled Python files
+*.pyc
+*.pyo
+
+# Ignore .vscode settings
+.vscode/
+
+# Ignore migrations directory (Django)
+**/migrations/

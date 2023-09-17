@@ -1,0 +1,11 @@
+[
+    {
+        "model": "tasks.photo",
+        "pk": 1,
+        "fields": {
+            "task": 1,
+            "image": "image.jpg",
+            "upload_date": "2023-09-17T12:00:00Z"
+        }
+    }
+]
